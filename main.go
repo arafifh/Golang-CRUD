@@ -72,7 +72,7 @@ func createEmployee(c *gin.Context) {
 	var newEmployee Employee
 	err := c.ShouldBindJSON(&newEmployee)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H {
 			"error": err.Error(),
 		})
 		return
@@ -95,10 +95,9 @@ func updateEmployee(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&updateEmployee)
 	if err != nil {
-		c.JSON(http.StatusBadRequest, gin.H {
-			"error":	err.Error(),
+		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H {
+			"error": err.Error(),
 		})
-		return
 	}
 
 	for i, Employee := range employees {
