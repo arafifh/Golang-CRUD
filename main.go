@@ -75,6 +75,7 @@ func createEmployee(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H {
 			"error":	err.Error(),
 		})
+		return
 	}
 
 	newEmployee.Id = fmt.Sprintf("c%d", len(employees) + 1)
@@ -97,6 +98,7 @@ func updateEmployee(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H {
 			"error":	err.Error(),
 		})
+		return
 	}
 
 	for i, Employee := range employees {
