@@ -72,10 +72,9 @@ func createEmployee(c *gin.Context) {
 	var newEmployee Employee
 	err := c.ShouldBindJSON(&newEmployee)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H {
-			"error": err.Error(),
+		c.JSON(http.StatusBadRequest, gin.H {
+			"error":	err.Error(),
 		})
-		return
 	}
 
 	newEmployee.Id = fmt.Sprintf("c%d", len(employees) + 1)
@@ -95,8 +94,8 @@ func updateEmployee(c *gin.Context) {
 
 	err := c.ShouldBindJSON(&updateEmployee)
 	if err != nil {
-		c.AbortWithStatusJSON(http.StatusBadRequest, gin.H {
-			"error": err.Error(),
+		c.JSON(http.StatusBadRequest, gin.H {
+			"error":	err.Error(),
 		})
 	}
 
